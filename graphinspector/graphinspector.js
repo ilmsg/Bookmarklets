@@ -9,7 +9,7 @@
       pageRegexp = /^\/pages\/.+\/([0-9]+)/;
   
   closeIt = function() {
-    var container = doc.getElementById("theFacebook");
+    var container = doc.getElementById("theInspector");
 
     if (!!container) {
       body.removeChild(container);
@@ -51,7 +51,7 @@
       }
 
       container = doc.createElement("div");
-      container.setAttribute("id", "theFacebook");
+      container.setAttribute("id", "theInspector");
 
       container.setAttribute("style", "position:fixed;top:99px;left:50%;width:500px;margin-left:-250px;font-size:13px;line-height:21px;box-shadow:0 0 32px #FCC101;z-index:424242");
 
@@ -61,7 +61,7 @@
 
       doc.getElementById("theId").value = result.id;
       doc.getElementById("theName").innerHTML = result.name;
-      doc.querySelector("#theFacebook pre").innerHTML = xhr.responseText;
+      doc.querySelector("#theInspector pre").innerHTML = xhr.responseText;
 
       doc.querySelector("#theFooter a").addEventListener("click", closeIt);
       doc.querySelector("#theHeader a").addEventListener("click", closeIt);
