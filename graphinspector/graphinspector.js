@@ -16,8 +16,8 @@
     }
   };
 
-  fail = function() {
-    alert("4oh4 Not Found");
+  fail = function(message) {
+    alert(message || "4oh4 Not Found");
   };
 
   if (pathName.search(/profile[.]php/) > -1) {
@@ -32,8 +32,7 @@
 
 
   if (!q) {
-    fail();
-    return;
+    return fail();
   }
 
   xhr.open("GET", "https://graph.facebook.com/" + q, true);
@@ -46,8 +45,9 @@
       result = JSON.parse(xhr.responseText);
 
       if (result.error) {
-        fail();
-        return;
+        return fail();
+      } else if (result === false) {
+        return fail("Graph API returned false. The page is probably blocked, unpublished or age restricted.");
       }
 
       container = doc.createElement("div");
